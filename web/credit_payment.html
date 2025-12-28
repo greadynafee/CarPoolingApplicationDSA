@@ -1,0 +1,179 @@
+<!doctype html>
+
+
+<html ng-app="mylms">
+  <head> 
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Introducing Lollipop, a sweet new take on Android.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>Car Pooling</title>
+<script>
+		function onLoad() 
+		{
+			document.addEventListener("deviceready", deviceReady, false);
+		}
+		function deviceReady() 
+		{
+			document.addEventListener("backbutton", backButtonCallback, false);
+		}
+		function backButtonCallback() 
+		{
+			navigator.app.backHistory();
+		}
+		</script>
+    <!-- Page styles -->
+    <link rel="stylesheet" href="css/css.css">
+    <link rel="stylesheet" href="css/icon.css">
+    <link rel="stylesheet" href="css/material.min.css">
+    <link rel="stylesheet" href="styles.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="fonts/font.css">
+	
+	
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  
+  
+    <style>
+    #view-source {
+      position: fixed;
+      display: block;
+      right: 0;
+      bottom: 0;
+      margin-right: 40px;
+      margin-bottom: 40px;
+      z-index: 900;
+    }
+	
+	table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+    </style>
+	<script src="js/angular-1.3.js"></script>
+	<script src="js/angular_cookies.js"></script>
+
+  </head>
+  <body ng-controller="myLMSCtrl">
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+
+      <div class="android-header mdl-layout__header mdl-layout__header--waterfall">
+        <div class="mdl-layout__header-row">
+          <span class="android-title mdl-layout-title">
+          <div id="head1" style="color:#336633; font-family:Quicksand; font-size: 25px; margin-left:-20px;"><b>Car Pooling</b></div>
+          </span>
+          <!-- Add spacer, to align navigation to the right in desktop -->
+          <div class="android-header-spacer mdl-layout-spacer"></div>
+          
+          <!-- Navigation -->
+          <div class="android-navigation-container">
+            <nav class="android-navigation mdl-navigation">
+              <a class="mdl-navigation__link" href="view_trip.html">View Trip</a>
+		  <a class="mdl-navigation__link" href="payment_dtl.html">Debit Details</a>
+          <a class="mdl-navigation__link" href="credit_payment.html">credit Details</a>
+		  <a class="mdl-navigation__link" href="mytrip.html">My Trip</a>
+         
+
+		  <a class="mdl-navigation__link" type= "submit" ng-click="logout()">Logout</a>
+				
+            </nav>
+          </div>
+          <span class="android-mobile-title mdl-layout-title">
+            <img class="android-logo-image" src="images/android-logo.png">
+          </span>
+          <button class="android-more-button mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect" id="more-button">
+            <i class="material-icons">more_vert</i>
+          </button>
+        
+        </div>
+      </div>
+
+     <div class="android-drawer mdl-layout__drawer">
+        <span class="mdl-layout-title">
+          <img class="android-logo-image" src="images/android-logo-white.png">
+        </span>
+        <nav class="mdl-navigation">
+         
+		
+		  <a class="mdl-navigation__link" href="post_trip.html">Post Trip</a>
+		  <a class="mdl-navigation__link" href="view_trip.html">View Trip</a>
+          <a class="mdl-navigation__link" href="mytrip.html">My Trip</a>
+          <a class="mdl-navigation__link" href="payment_dtl.html">Debit Details</a>
+		  <a class="mdl-navigation__link" href="credit_payment.html">Credit Details</a>
+          <a class="mdl-navigation__link" href="booked_trip.html">Booked Trips</a>
+
+          
+         
+
+		  <a class="mdl-navigation__link" type= "submit" ng-click="logout()">Logout</a>
+        </nav>
+     </div>
+
+      <div class="android-content mdl-layout__content">
+        <a name="top"></a>
+        <div class="android-be-together-section mdl-typography--text-center">
+          <div class="logo-font android-slogan"> Credit Payment Details</div>
+          
+          <div class="logo-font android-create-character">
+		  
+					<div class="table-responsive card">
+					<table class="table table-hover table-stripe" title="Default Tabl">
+					
+					<thead style="background-color: #2979FF; color:#fff;">
+							<tr>
+								<th style="color:#fff">User Email</th>
+								<th style="color:#fff">Name</th>
+								<th style="color:#fff">Address</th>
+								<th style="color:#fff">Category</th>
+								<th style="color:#fff">Seat</th>
+								<th style="color:#fff">Account No</th>
+								<th style="color:#fff">Amount</th>
+								
+							</tr>
+						</thead>
+						<tbody ng-repeat="x in credit_details| filter : search_field">
+							<tr>
+							
+								<td ng-bind="x.receive_email"></td>	
+								<td ng-bind="x.name"></td>								
+								<td ng-bind="x.address"></td>
+								<td ng-bind="x.category"></td>	
+								<td ng-bind="x.free_seat"></td>	
+								<td ng-bind="x.accno"></td>								
+								<td ng-bind="x.amount"></td>
+								
+								</tr>
+								</tbody>
+								</div>
+								</table>
+					<table>
+								
+							</tr>
+						</thead>
+	  				</table>
+		    </div>
+					
+        </div>
+		
+      </div>
+    </div>
+  
+    <script src="js/material.min.js"></script>
+	<script type="text/javascript" src="js/angular_car_data.js"></script>
+  </body>
+</html>
